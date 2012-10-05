@@ -7,7 +7,7 @@ look-busy
 
 There is no license associated with the files contained within this repository. Use and edit them any way you please.
 
-### AUTHOR
+### AUTHORS/CONTRIBUTORS
 
-Bill Israel     - [bill.israel@gmail.com](mailto:bill.israel@gmail.com) - [@epochblue](http://twitter.com/epochblue)
-Micah Breedlove - [druid628@gmail.com](mailto:druid628@gmail.com)       - [@druid628](http://twitter.com/druid628)
+* Bill Israel - [bill.israel@gmail.com](mailto:bill.israel@gmail.com) - [@epochblue](http://twitter.com/epochblue)
+* Micah Breedlove - [druid628@gmail.com](mailto:druid628@gmail.com) - [@druid628](http://twitter.com/druid628)
