@@ -9,4 +9,4 @@ There is no license associated with the files contained within this repository. 
 
 ### AUTHOR
 
-Bill Israel - [bill.israel@gmail.com](mailto:bill.israel@gmail.com) - [http://twitter.com/epochblue](@epochblue)
+Bill Israel - [bill.israel@gmail.com](mailto:bill.israel@gmail.com) - [@epochblue](http://twitter.com/epochblue)
