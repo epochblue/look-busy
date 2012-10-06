@@ -9,5 +9,6 @@ There is no license associated with the files contained within this repository. 
 
 ### AUTHORS/CONTRIBUTORS
 
-* Bill Israel - [bill.israel@gmail.com](mailto:bill.israel@gmail.com) - [@epochblue](http://twitter.com/epochblue)
-* Micah Breedlove - [druid628@gmail.com](mailto:druid628@gmail.com) - [@druid628](http://twitter.com/druid628)
+* Bill Israel - [http://github.com/epochblue](http://github.com/epochblue) - [@epochblue](http://twitter.com/epochblue)
+* Micah Breedlove - [http://github.com/druid628](http://github.com/druid628) - [@druid628](http://twitter.com/druid628)
+* Doug Hurst - [http://github.com/dalanhurst](http://github.com/dalanhurst) - [@dalanhurst](http://twitter.com/dalanhurst)
