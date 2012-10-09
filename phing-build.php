@@ -2,15 +2,18 @@
 /**
  * Look Busy
  *
- * Mocks a Phing build for each directory in this file's parent directory, then loops
+ * Mocks a Phing build for each directory in this project's parent directory, then loops
  *
  * PHP Version 5.3
  *
  * @package    look-busy
  * @author     Doug Hurst <dalan.hurst@gmail.com>
+ * @requires   pcntl
  */
 
+declare(ticks = 1);
 date_default_timezone_set('America/Chicago');
+pcntl_signal(SIGINT, 'handleSignal');
 
 function walk($directory, Closure $callback) {
     foreach (array_filter(scandir($directory), function($f) { return $f != '.' && $f != '..'; }) as $file) {
@@ -28,6 +31,15 @@ function makeRenderer(array $renderers) {
             .$renderers[rand(0, count($renderers) - 1)]($file)
             ."\033[";
     };
+}
+
+function handleSignal($signal) {
+    echo PHP_EOL."\033[0;31m".'Halting build!'.PHP_EOL."\033[";
+    sleep(1);
+    echo "\033[0;33m".'Unwinding stack...'.PHP_EOL."\033[";
+    sleep(1);
+    echo "\033[0;37m".'Build halted at '.rand(1,99).'%.'.PHP_EOL."\033[".PHP_EOL;
+    exit(1);
 }
 
 while (true) {
@@ -50,7 +62,10 @@ while (true) {
                 return "0;33m".'WARNING: file '.$filename.' contains deprecated flags'.PHP_EOL;
             },
             function($filename) {
-                echo "0;37m".'phing> ['.date('r').'] Waiting for response from server...'.PHP_EOL;
+                echo "0;37m".'phing> ['.date('r').'] Waiting for response from server (ftp.'
+                    .current(explode('.', $filename))
+                    .'.com)...'
+                    .PHP_EOL;
                 sleep(rand(1, 3));
                 return '';
             },
