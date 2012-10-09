@@ -6,18 +6,17 @@
  * Date: 10/9/12
  */
 
-var n = 0;
-var paths = 0;
-var objects = 'building,street,person,office,reference,visit'.split(',');
-var properties = 'timestamp,name,location,email,phone'.split(',');
-var verbs = 'fetch,update,collect,send,read,write'.split(',');
+var objects = 'authority,person,reference,institution,document,file'.split(',');
+var properties = 'timestamp,name,location,email,phone,children,parent'.split(',');
+var verbs = 'fetch,update,collect,send,read,write,track,annotate,seal,create,destroy'.split(',');
 
 function rand(min, max) {
-    return Math.floor(Math.random() * (max + min));
+    var r = Math.floor(Math.random() * (max + min));
+    return min > r ? min : r;
 }
 
-function choose(array) {
-    return array[rand(1, array.length - 1)];
+function choose(arr) {
+    return arr[rand(1, arr.length - 1)];
 }
 
 function ucfirst(str) {
@@ -39,7 +38,7 @@ function define() {
     do {
         o[choose(properties)] = 'ref#' + rand(1001,9999);
     } while (rand(1, 2) == 1);
-    return o;
+    return JSON.stringify(o);
 }
 
 function command() {
@@ -47,25 +46,34 @@ function command() {
         + objects.slice(rand(0, 2), rand(2, (objects.length - 1))) + '); })()';
 }
 
-function do_line() {
-    if (n === 0) {
-        console.log('');
-    } else if (n == 1) {
-        paths = 2 + rand(1, 2);
-        console.log(combine());
-    } else if (n < paths) {
-        console.log(define());
-    } else if (n == paths) {
-        console.log(combine());
-    } else if (n == paths + 1) {
-        console.log('');
-    } else if (n == paths + 2) {
-        console.log(command());
-    } else {
-        console.log('');
-        n = 0;
-    }
-    n += 1;
+function colorln(line, fg) {
+    console.log('\033[0;' + fg + 'm' + line + '\033[m');
 }
 
-setInterval(do_line, 1200);
+var n = 0;
+var paths = 0;
+setInterval(
+    function() {
+        if (n === 0) {
+            colorln('', 37);
+        } else if (n == 1) {
+            colorln(combine(), 37);
+            paths = rand(3, 4);
+        } else if (n < paths) {
+            colorln(define(), 37);
+        } else if (n == paths) {
+            colorln(combine(), 37);
+        } else if (n == paths + 1) {
+            colorln('', 37);
+        } else if (n == paths + 2) {
+            colorln(command(), 33);
+        } else {
+            colorln('', 37);
+            n = 0;
+        }
+        n += 1;
+    },
+    1200
+);
+
+process.on('SIGINT', function() { colorln('', 37); process.exit(0); });
