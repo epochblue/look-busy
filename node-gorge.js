@@ -47,7 +47,7 @@ function command() {
 }
 
 function colorln(line, fg) {
-    console.log('\033[0;' + fg + 'm' + line + '\033[');
+    console.log('\033[0;' + fg + 'm' + line + '\033[m');
 }
 
 var n = 0;
