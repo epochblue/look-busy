@@ -21,7 +21,7 @@ split = 25
 
 while True:
     rando = float(random.randint(0,100)/100.0)
-    now = time.strftime("%Y %d %b %H:%M:S +0000");
+    now = time.strftime("%Y %d %b %H:%M:%S +0000");
 
     if i > 0 and i % split == 0:
         print "\nfinished indexing at {0}".format(now)
